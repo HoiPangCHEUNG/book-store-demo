@@ -7,6 +7,10 @@ export const bookDescription = "Description";
 export const bookAuthor = "Author";
 export const bookImageUrl = "Image Url";
 
+export const bookCreated = "Book created";
+export const bookUpdated = "Book updated";
+export const bookDeleted = "Book deleted";
+
 export const missingBookName = "Please enter the book name";
 export const missingBookAuthor = "Please enter the book author";
 export const missingBookImageUrl = "Please enter the book image url";

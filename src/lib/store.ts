@@ -2,14 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import bookReducer from "./features/book";
 import bookDialogReducer from "./features/bookDialog";
-// import confirmDialogReducer from "./features/confirmDialog";
+import toasterReducer from "./features/toaster";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       books: bookReducer,
       bookDialog: bookDialogReducer,
-      // confirmDialog: confirmDialogReducer,
+      toaster: toasterReducer,
     },
   });
 };

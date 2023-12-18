@@ -4,11 +4,16 @@ import { Badge, Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { bookCategoryOptions, unknownCategory } from "@/app/constant/book";
+import {
+  bookCategoryOptions,
+  bookDeleted,
+  unknownCategory,
+} from "@/app/constant/book";
 import { clickToCollapse, clickToExpand } from "@/app/constant/button";
 import { CardProps } from "@/app/interface/card";
 import { removeBookById } from "@/lib/features/book";
 import { openDialog } from "@/lib/features/bookDialog";
+import { openToaster } from "@/lib/features/toaster";
 import { useAppDispatch } from "@/lib/hooks";
 
 /**
@@ -49,6 +54,11 @@ export const Card = (props: CardProps) => {
     </div>
   );
 
+  const handleRemoveBookClick = () => {
+    dispatch(removeBookById(props.book.id));
+    dispatch(openToaster({ title: bookDeleted, msg: props.book.name }));
+  };
+
   const handleEditBookClick = () => {
     dispatch(openDialog(props.book));
   };
@@ -64,9 +74,7 @@ export const Card = (props: CardProps) => {
         size="1"
         radius="full"
         variant="outline"
-        onClick={() => {
-          dispatch(removeBookById(props.book.id));
-        }}
+        onClick={handleRemoveBookClick}
       >
         <Cross1Icon width={10} height={10} />
       </IconButton>

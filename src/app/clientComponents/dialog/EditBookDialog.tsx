@@ -26,6 +26,8 @@ import {
   bookImageUrl,
   missingBookImageUrl,
   invalidBookImageUrl,
+  bookCreated,
+  bookUpdated,
 } from "@/app/constant/book";
 import {
   cancelButtonText,
@@ -34,6 +36,7 @@ import {
 } from "@/app/constant/button";
 import { createBook, updateBookById } from "@/lib/features/book";
 import { closeDialog } from "@/lib/features/bookDialog";
+import { openToaster } from "@/lib/features/toaster";
 import { useAppSelector, useAppStore } from "@/lib/hooks";
 import { isValidUrl } from "@/lib/utils/url";
 
@@ -85,6 +88,7 @@ export const EditBookDialog = () => {
           author: author,
         })
       );
+      dispatch(openToaster({ title: bookCreated, msg: name }));
     } else {
       // Update an existing book
       dispatch(
@@ -98,6 +102,7 @@ export const EditBookDialog = () => {
           author: author,
         })
       );
+      dispatch(openToaster({ title: bookUpdated, msg: name }));
     }
 
     setOpen(false);

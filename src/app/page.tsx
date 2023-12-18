@@ -4,6 +4,7 @@ import "@radix-ui/themes/styles.css";
 import { CardList } from "./clientComponents/card/CardList";
 import { EditBookDialog } from "./clientComponents/dialog/EditBookDialog";
 import { Header } from "./clientComponents/header/Header";
+import { Toaster } from "./clientComponents/toaster/Toaster";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
           <CardList />
         </div>
         <EditBookDialog />
+        <Toaster />
       </Container>
     </main>
   );
