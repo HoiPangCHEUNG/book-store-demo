@@ -9,7 +9,7 @@ import { SelectProps } from "@/app/interface/select";
 /**
  * Select renders a list of categories and items
  */
-export const Select = forwardRef((props: SelectProps) => {
+export const Select = forwardRef((props: SelectProps, ref) => {
   return (
     <Sel.Root
       onValueChange={props.onValueChange}

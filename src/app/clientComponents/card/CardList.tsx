@@ -23,7 +23,7 @@ export const CardList = () => {
     </div>
   ) : (
     <div className="flex flex-col space-y-4 items-center relative">
-      <Image src={placeholderSvg} alt="" />
+      <Image priority src={placeholderSvg} alt="" />
       <Text className="tracking-widest text-sm" color="gray">
         {noBook}
       </Text>

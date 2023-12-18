@@ -35,7 +35,7 @@ import {
   updateButtonText,
 } from "@/app/constant/button";
 import { createBook, updateBookById } from "@/lib/features/book";
-import { closeDialog } from "@/lib/features/bookDialog";
+import { closeDialog, openDialog } from "@/lib/features/bookDialog";
 import { openToaster } from "@/lib/features/toaster";
 import { useAppSelector, useAppStore } from "@/lib/hooks";
 import { isValidUrl } from "@/lib/utils/url";
@@ -113,6 +113,10 @@ export const EditBookDialog = () => {
     setIsMissingCategory(false);
   };
 
+  const onOpenChange = (open: boolean) => {
+    open ? dispatch(openDialog()) : dispatch(closeDialog());
+  };
+
   useEffect(() => {
     // Reset form fields when dialog is closed
     if (!open) {
@@ -128,9 +132,7 @@ export const EditBookDialog = () => {
   }, [open]);
 
   useEffect(() => {
-    if (bookDialog.open) {
-      setOpen(true);
-    }
+    setOpen(bookDialog.open);
   }, [bookDialog.open]);
 
   useEffect(() => {
@@ -145,7 +147,7 @@ export const EditBookDialog = () => {
   }, [bookDialog.book]);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Content>
         <Dialog.Title className="flex items-center space-x-2">
           {bookDialog.book ? (
