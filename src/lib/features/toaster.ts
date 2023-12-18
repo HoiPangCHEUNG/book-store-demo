@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Toaster } from "@/app/interface/toast";
-
 interface ToasterState {
   open: boolean;
   title: string;
