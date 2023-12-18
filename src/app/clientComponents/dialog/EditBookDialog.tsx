@@ -4,7 +4,6 @@ import * as Form from "@radix-ui/react-form";
 import { Pencil2Icon, UpdateIcon } from "@radix-ui/react-icons";
 import { Button, Dialog, Flex, TextArea, TextField } from "@radix-ui/themes";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 import {
   addBook,
@@ -37,7 +36,7 @@ import {
 import { createBook, updateBookById } from "@/lib/features/book";
 import { closeDialog, openDialog } from "@/lib/features/bookDialog";
 import { openToaster } from "@/lib/features/toaster";
-import { useAppSelector, useAppStore } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector, useAppStore } from "@/lib/hooks";
 import { isValidUrl } from "@/lib/utils/url";
 
 import { Select } from "../select/Select";
@@ -49,7 +48,7 @@ import { Select } from "../select/Select";
  */
 export const EditBookDialog = () => {
   const bookDialog = useAppSelector((state) => state.bookDialog);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(
